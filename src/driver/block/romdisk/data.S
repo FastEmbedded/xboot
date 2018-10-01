@@ -25,4 +25,9 @@
  */
 
 .section .romdisk, "a"
+#ifdef ROMDISK_CPIO_PATH
+.incbin ROMDISK_CPIO_PATH
+#else
 .incbin ".obj/romdisk.cpio"
+#endif
+

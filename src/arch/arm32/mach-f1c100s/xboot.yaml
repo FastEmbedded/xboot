@@ -1,0 +1,200 @@
+common:
+    macros:
+        - __ARM32_ARCH__=5
+        - __ARM926EJS__
+    flags:
+        - -mcpu=arm926ej-s
+        - -mfloat-abi=soft
+        - -marm 
+        - -mno-thumb-interwork
+
+files:
+    includes:
+      default:
+        - src/include
+        - src/arch/${arch}/include
+        - src/arch/${arch}/mach-${mach}/include
+      libfdt:
+        - src/external/libfdt-1.4.2
+      lz4:
+        - src/external/lz4-1.8.2
+      zlib:
+        - src/external/zlib-1.2.11
+      libpng:
+        - src/external/libpng-1.6.32
+      lua:
+        - src/external/lua-5.3.4
+      lua-cjson:
+        - src/external/lua-cjson-2.1.0
+      pixman:
+        - src/external/pixman-0.34.0
+        - src/external/pixman-0.34.0/${arch}
+      cairo:
+        - src/external/cairo-1.14.10
+      freetype:
+        - src/external/freetype-2.8/include 
+        - src/external/freetype-2.8/src/autofit 
+        - src/external/freetype-2.8/src/base 
+        - src/external/freetype-2.8/src/cache 
+        - src/external/freetype-2.8/src/cff 
+        - src/external/freetype-2.8/src/cid 
+        - src/external/freetype-2.8/src/gxvalid 
+        - src/external/freetype-2.8/src/otvalid 
+        - src/external/freetype-2.8/src/pfr 
+        - src/external/freetype-2.8/src/psaux 
+        - src/external/freetype-2.8/src/pshinter 
+        - src/external/freetype-2.8/src/psnames 
+        - src/external/freetype-2.8/src/raster 
+        - src/external/freetype-2.8/src/sfnt 
+        - src/external/freetype-2.8/src/smooth 
+        - src/external/freetype-2.8/src/truetype 
+        - src/external/freetype-2.8/src/type1 
+        - src/external/freetype-2.8/src/type42 
+        - src/external/freetype-2.8/src/winfonts
+      chipmunk:
+        - external/chipmunk-7.0.2/include
+    sources:
+      arch:
+        - src/arch/${arch}/lib/cpu
+        - src/arch/${arch}/lib
+        - src/arch/${arch}/mach-${mach}
+        - src/arch/${arch}/mach-${mach}/command
+        - src/arch/${arch}/mach-${mach}/driver
+      lib:
+        - src/lib/libc
+        - src/lib/libc/charset
+        - src/lib/libc/crypto
+        - src/lib/libc/ctype
+        - src/lib/libc/environ
+        - src/lib/libc/errno
+        - src/lib/libc/exit
+        - src/lib/libc/filter
+        - src/lib/libc/locale
+        - src/lib/libc/malloc
+        - src/lib/libc/path
+        - src/lib/libc/stdio
+        - src/lib/libc/stdlib
+        - src/lib/libc/string
+        - src/lib/libc/time
+        - src/lib/libm/${arch}
+        - src/lib/libm
+        - src/lib/libx
+      init:
+        - src/init
+      kernel:
+        - src/kernel
+        - src/kernel/core
+        - src/kernel/shell
+        - src/kernel/command
+        - src/kernel/time
+        - src/kernel/fs
+        - src/kernel/fs/vfs
+        - src/kernel/fs/ramfs
+        - src/kernel/fs/sysfs
+        - src/kernel/fs/arfs
+        - src/kernel/fs/tarfs
+        - src/kernel/fs/cpiofs
+        - src/kernel/fs/fatfs
+        - src/kernel/xfs
+      driver:
+        - src/driver/adc
+        - src/driver/audio
+        - src/driver/battery
+        - src/driver/block
+        - src/driver/block/partition
+        - src/driver/block/romdisk
+        - src/driver/buzzer
+        - src/driver/clk
+        - src/driver/clockevent
+        - src/driver/clocksource
+        - src/driver/compass
+        - src/driver/console
+        - src/driver/dac
+        - src/driver/dma
+        - src/driver/framebuffer
+        - src/driver/gmeter
+        - src/driver/gpio
+        - src/driver/gyroscope
+        - src/driver/hygrometer
+        - src/driver/i2c
+        - src/driver/input
+        - src/driver/input/rc
+        - src/driver/interrupt
+        - src/driver/laserscan
+        - src/driver/led
+        - src/driver/light
+        - src/driver/motor
+        - src/driver/nvmem
+        - src/driver/pressure
+        - src/driver/proximity
+        - src/driver/pwm
+        - src/driver/regulator
+        - src/driver/reset
+        - src/driver/rng
+        - src/driver/rtc
+        - src/driver/sd
+        - src/driver/servo
+        - src/driver/spi
+        - src/driver/stepper
+        - src/driver/thermometer
+        - src/driver/uart
+        - src/driver/vibrator
+        - src/driver/watchdog
+      framework:
+        - src/framework
+        - src/framework/base64
+        - src/framework/display
+        - src/framework/event
+        - src/framework/hardware
+        - src/framework/lang
+        - src/framework/stopwatch
+      libfdt:
+        - src/external/libfdt-1.4.2
+      lz4:
+        - src/external/lz4-1.8.2
+      zlib:
+        - src/external/zlib-1.2.11
+      libpng:
+        - src/external/libpng-1.6.32
+      lua:
+        - src/external/lua-5.3.4
+      lua-cjson:
+        - src/external/lua-cjson-2.1.0
+      pixman:
+        - src/external/pixman-0.34.0
+        - src/external/pixman-0.34.0/${arch}
+      cairo:
+        - src/external/cairo-1.14.10
+      freetype:
+        - src/external/freetype-2.8/include 
+        - src/external/freetype-2.8/src/autofit 
+        - src/external/freetype-2.8/src/base 
+        - src/external/freetype-2.8/src/cache 
+        - src/external/freetype-2.8/src/cff 
+        - src/external/freetype-2.8/src/cid 
+        - src/external/freetype-2.8/src/gxvalid 
+        - src/external/freetype-2.8/src/otvalid 
+        - src/external/freetype-2.8/src/pfr 
+        - src/external/freetype-2.8/src/psaux 
+        - src/external/freetype-2.8/src/pshinter 
+        - src/external/freetype-2.8/src/psnames 
+        - src/external/freetype-2.8/src/raster 
+        - src/external/freetype-2.8/src/sfnt 
+        - src/external/freetype-2.8/src/smooth 
+        - src/external/freetype-2.8/src/truetype 
+        - src/external/freetype-2.8/src/type1 
+        - src/external/freetype-2.8/src/type42 
+        - src/external/freetype-2.8/src/winfonts
+      chipmunk:
+        - external/chipmunk-7.0.2/src
+linker:
+    flags:
+    - -nostartfiles
+    - -nostdlib
+    - -Xlinker --gc-sections
+    search_paths:
+    - src/arch/${arch}/mach-${mach}
+    script_files:
+    - xboot.ld
+    libraries:
+    - gcc

@@ -1,0 +1,17 @@
+name: xboot
+common:
+    macros:
+        - DEBUG
+        - ROMDISK_CPIO_PATH="romdisk.cpio"
+    flags:
+        - -g 
+        - -ggdb
+        - -Wall
+        - -O3
+subsrc:
+    - src/arch/${arch}/mach-${mach}/xboot.yaml
+
+properties:
+    arch: arm32
+    mach: f1c100s
+required:
