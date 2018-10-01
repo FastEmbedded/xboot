@@ -2,7 +2,7 @@ name: xboot
 common:
     macros:
         - DEBUG
-        - ROMDISK_CPIO_PATH="romdisk.cpio"
+        - ROMDISK_CPIO_PATH=../../../../romdisk.cpio
     flags:
         - -g 
         - -ggdb
