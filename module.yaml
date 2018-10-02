@@ -9,7 +9,7 @@ common:
         - -Wall
         - -O3
 subsrc:
-    - src/arch/${arch}/mach-${mach}/xboot.yaml
+    - src/arch/${arch}/mach-${mach}/xboot.yaml 
 
 misc:
     pre_cmd:
