@@ -7,13 +7,128 @@ common:
         - -mfloat-abi=soft
         - -marm 
         - -mno-thumb-interwork
+        - -fno-builtin-printf
 
 files:
     includes:
-      default:
+      include:
         - src/include
+      arch:
         - src/arch/${arch}/include
+      arch/mach:
         - src/arch/${arch}/mach-${mach}/include
+        - src/arch/${arch}/mach-${mach}
+      arch/mach/command:
+        - src/arch/${arch}/mach-${mach}/command
+      arch/mach/driver:
+        - src/arch/${arch}/mach-${mach}/driver
+      arch/lib/cpu:
+        - src/arch/${arch}/lib/cpu
+      arch/lib:
+        - src/arch/${arch}/lib
+      lib/libc:
+        - src/lib/libc
+        - src/lib/libc/charset
+        - src/lib/libc/crypto
+        - src/lib/libc/ctype
+        - src/lib/libc/environ
+        - src/lib/libc/errno
+        - src/lib/libc/exit
+        - src/lib/libc/filter
+        - src/lib/libc/locale
+        - src/lib/libc/malloc
+        - src/lib/libc/path
+        - src/lib/libc/stdio
+        - src/lib/libc/stdlib
+        - src/lib/libc/string
+        - src/lib/libc/time
+      lib/libm:
+        - src/lib/libm/${arch}
+        - src/lib/libm
+      lib/libx:
+        - src/lib/libx
+      init:
+        - src/init
+      kernel:
+        - src/kernel
+      kernel/core:
+        - src/kernel/core
+      kernel/shell:
+        - src/kernel/shell
+      kernel/command:
+        - src/kernel/command
+      kernel/time:
+        - src/kernel/time
+      kernel/fs:
+        - src/kernel/fs
+      kernel/fs/vfs:
+        - src/kernel/fs/vfs
+      kernel/fs/ramfs:
+        - src/kernel/fs/ramfs
+      kernel/fs/sysfs:
+        - src/kernel/fs/sysfs
+      kernel/fs/arfs:
+        - src/kernel/fs/arfs
+      kernel/fs/tarfs:
+        - src/kernel/fs/tarfs
+      kernel/fs/cpiofs:
+        - src/kernel/fs/cpiofs
+      kernel/fs/fatfs:
+        - src/kernel/fs/fatfs
+      kernel/xfs:
+        - src/kernel/xfs
+      driver:
+        - src/driver/adc
+        - src/driver/audio
+        - src/driver/battery
+        - src/driver/block
+        - src/driver/block/partition
+        - src/driver/block/romdisk
+        - src/driver/buzzer
+        - src/driver/clk
+        - src/driver/clockevent
+        - src/driver/clocksource
+        - src/driver/compass
+        - src/driver/console
+        - src/driver/dac
+        - src/driver/dma
+        - src/driver/framebuffer
+        - src/driver/gmeter
+        - src/driver/gpio
+        - src/driver/gyroscope
+        - src/driver/hygrometer
+        - src/driver/i2c
+        - src/driver/input
+        - src/driver/input/rc
+        - src/driver/interrupt
+        - src/driver/laserscan
+        - src/driver/led
+        - src/driver/light
+        - src/driver/motor
+        - src/driver/nvmem
+        - src/driver/pressure
+        - src/driver/proximity
+        - src/driver/pwm
+        - src/driver/regulator
+        - src/driver/reset
+        - src/driver/rng
+        - src/driver/rtc
+        - src/driver/sd
+        - src/driver/servo
+        - src/driver/spi
+        - src/driver/stepper
+        - src/driver/thermometer
+        - src/driver/uart
+        - src/driver/vibrator
+        - src/driver/watchdog
+      framework:
+        - src/framework
+        - src/framework/base64
+        - src/framework/display
+        - src/framework/event
+        - src/framework/hardware
+        - src/framework/lang
+        - src/framework/stopwatch
       libfdt:
         - src/external/libfdt-1.4.2
       lz4:
@@ -54,13 +169,17 @@ files:
       chipmunk:
         - external/chipmunk-7.0.2/include
     sources:
-      arch:
+      arch/lib/cpu:
         - src/arch/${arch}/lib/cpu
+      arch/lib:
         - src/arch/${arch}/lib
+      arch/mach:
         - src/arch/${arch}/mach-${mach}
+      arch/mach/command:
         - src/arch/${arch}/mach-${mach}/command
+      arch/mach/driver:
         - src/arch/${arch}/mach-${mach}/driver
-      lib:
+      lib/libc:
         - src/lib/libc
         - src/lib/libc/charset
         - src/lib/libc/crypto
@@ -76,25 +195,40 @@ files:
         - src/lib/libc/stdlib
         - src/lib/libc/string
         - src/lib/libc/time
+      lib/libm:
         - src/lib/libm/${arch}
         - src/lib/libm
+      lib/libx:
         - src/lib/libx
       init:
         - src/init
       kernel:
         - src/kernel
+      kernel/core:
         - src/kernel/core
+      kernel/shell:
         - src/kernel/shell
+      kernel/command:
         - src/kernel/command
+      kernel/time:
         - src/kernel/time
+      kernel/fs:
         - src/kernel/fs
+      kernel/fs/vfs:
         - src/kernel/fs/vfs
+      kernel/fs/ramfs:
         - src/kernel/fs/ramfs
+      kernel/fs/sysfs:
         - src/kernel/fs/sysfs
+      kernel/fs/arfs:
         - src/kernel/fs/arfs
+      kernel/fs/tarfs:
         - src/kernel/fs/tarfs
+      kernel/fs/cpiofs:
         - src/kernel/fs/cpiofs
+      kernel/fs/fatfs:
         - src/kernel/fs/fatfs
+      kernel/xfs:
         - src/kernel/xfs
       driver:
         - src/driver/adc

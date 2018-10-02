@@ -2,7 +2,7 @@ name: xboot
 common:
     macros:
         - DEBUG
-        - ROMDISK_CPIO_PATH=../../../../romdisk.cpio
+        - ROMDISK_CPIO_PATH='"./romdisk.cpio"'
     flags:
         - -g 
         - -ggdb
@@ -10,6 +10,14 @@ common:
         - -O3
 subsrc:
     - src/arch/${arch}/mach-${mach}/xboot.yaml
+
+misc:
+    pre_cmd:
+    - find ../../../../xboot/src/romdisk -not -name . | ../../../../feScripts/cpio -o -H newc --quiet > romdisk.cpio
+    post_cmd:
+    - arm-eabi-objcopy -O binary -j .text -j .data xboot.elf  xboot.bin
+    - ../../../../xboot/src/arch/${arch}/mach-${mach}/tools/windows/mksunxi xboot.bin
+    - ../../../../xboot/src/arch/${arch}/mach-${mach}/tools/windows/mkz -m 3 -n 0 -p 0 -z -s 16384 -i "" -k "" xboot.bin xboot.bin.z
 
 properties:
     arch: arm32
